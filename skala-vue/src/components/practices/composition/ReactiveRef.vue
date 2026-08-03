@@ -30,7 +30,7 @@ const changeUserName = () => {
         <p>사용자 정보: 이름 - {{ user.name }}, 나이 - {{ user.age }}</p>
         
         <button @click="increaseRef">Ref 변수 증가</button>
-        <button @click="isActive != isActive">토글</button>
+        <button @click="isActive = !isActive">토글</button>
         <button @click="items.push('귤')">과일 추가</button>
         <button @click="changeUserName">사용자 이름 변경</button>
     </div>
