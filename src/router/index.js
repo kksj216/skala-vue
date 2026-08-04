@@ -5,21 +5,27 @@ import WeatherAllTasksView from '../views/WeatherAllTasksView.vue'
 
 const routes = [
     { path: '/', name: 'Home', component: HomeView },
-    // {
-    //     path: '/weather',
-    //     name: 'WeatherHomeView',
-    //     component: WeatherHomeView,
-    //     meta: {title: '날씨 대시보드'}
-    // },
     {
         path: '/weather',
         component: WeatherAllTasksView,
         children: [
-            { path: '', name: 'WeatherHome', component: WeatherHomeView },
-            { path: 'about', name: 'WeatherAbout', component: () => import('../views/WeatherAboutView.vue') },
-            { path: ':cityId', name: 'WeatherDetail', component: () => import('../views/WeatherDetailView.vue') },
-    ],
-  },
+            {
+                path: '', 
+                name: 'WeatherHome', 
+                component: WeatherHomeView 
+            },
+            {
+                path: 'about', 
+                name: 'WeatherAbout', 
+                component: () => import('../views/WeatherAboutView.vue') 
+            },
+            {
+                path: ':cityId', 
+                name: 'WeatherDetail', 
+                component: () => import('../views/WeatherDetailView.vue') 
+            },
+        ],
+    },
     {
         path: '/about',
         name: 'WeatherAbout',
@@ -38,9 +44,21 @@ const routes = [
         component: () => import('../views/NotFoundView.vue'),
         meta: { title: '페이지 없음' } 
     },
-    { path: '/practices/basic', name: 'PracticeBasic', component: () => import('../views/practices/BasicPracticeView.vue') },
-    { path: '/practices/store', name: 'PracticeStore', component: () => import('../views/practices/StorePracticeView.vue') },
-    { path: '/practices/composition', name: 'PracticeComposition', component: () => import('../views/practices/CompositionPracticeView.vue') },
+    {   
+        path: '/practices/basic', 
+        name: 'PracticeBasic', 
+        component: () => import('../views/practices/BasicPracticeView.vue')
+    },
+    { 
+        path: '/practices/store', 
+        name: 'PracticeStore', 
+        component: () => import('../views/practices/StorePracticeView.vue')
+    },
+    { 
+        path: '/practices/composition', 
+        name: 'PracticeComposition', 
+        component: () => import('../views/practices/CompositionPracticeView.vue') 
+    },
 
 ]
 const router = createRouter({
