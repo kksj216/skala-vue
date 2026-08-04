@@ -45,7 +45,9 @@ const showDetail = (cityName, status) => {
     </BaseDashboardCard>
 
     <BaseDashboardCard>
-      <h3>🏙️ 지역별 날씨 현황</h3>
+      <template #header>
+        <h3>🏙️ 🌆 지역별 날씨 현황 (헤더 슬롯)</h3>
+      </template>
 
       <WeatherCard 
         v-for="item in filteredWeatherList" 
@@ -62,6 +64,10 @@ const showDetail = (cityName, status) => {
       </WeatherCard>
 
       <p v-if="filteredWeatherList.length === 0" style="text-align: center; color: #e74c3c; padding: 10px 0">😭 검색 결과와 일치하는 도시가 없습니다.</p>
+
+      <template #footer>
+        <small>마지막 업데이트: 방금 전</small>
+      </template>
     </BaseDashboardCard>
 
     <div class="status-bar">
