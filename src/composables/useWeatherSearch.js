@@ -13,6 +13,11 @@ export function useWeatherSearch(initialList = []) {
     return weatherList.value.filter((item) => item.name.includes(query))  // 검색어가 포함된 도시만 칼같이 필터링하여 실시간으로 뱉어냅니다.
   })
 
+  // 새 도시를 weatherList에 .push()하는 함수 추가
+  const addCity = (newCity) => {
+    weatherList.value.push(newCity)
+  }
+
   // immediate 옵션이 포함된 watch
   // watch를 활용한 선택 도시 추적 센서
   watch(
@@ -31,6 +36,7 @@ export function useWeatherSearch(initialList = []) {
     weatherList,
     searchQuery,
     selectedCityInfo,
-    filteredWeatherList
+    filteredWeatherList,
+    addCity
   }
 }

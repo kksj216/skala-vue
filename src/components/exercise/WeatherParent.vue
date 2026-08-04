@@ -4,6 +4,7 @@ import { ref, computed, watch, watchEffect } from 'vue'
 import BaseDashboardCard from './BaseDashboardCard.vue'
 import SearchBar from './SearchBar.vue'
 import WeatherCard from './WeatherCard.vue'
+import AddCityForm from './AddCityForm.vue' // AddCityForm 컴포넌트 import
 import { useWeatherSearch } from '@/composables/useWeatherSearch'
 
 const weatherList = ref([
@@ -13,7 +14,7 @@ const weatherList = ref([
 ])
 
 // filteredWeatherList 관련 로직(computed + watch)을 useWeatherSearch() Composable로 추출하여 재사용
-const { searchQuery, selectedCityInfo, filteredWeatherList } = useWeatherSearch(weatherList)
+const { searchQuery, selectedCityInfo, filteredWeatherList, addCity } = useWeatherSearch(weatherList)
 
 // const searchQuery = ref('')
 // const selectedCityInfo = ref('카드를 클릭하거나 검색해 보세요.')
@@ -48,6 +49,8 @@ const showDetail = (cityName, status) => {
       <template #header>
         <h3>🏙️ 🌆 지역별 날씨 현황 (헤더 슬롯)</h3>
       </template>
+
+      <AddCityForm @add-city="addCity" />
 
       <WeatherCard 
         v-for="item in filteredWeatherList" 
