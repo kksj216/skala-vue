@@ -37,14 +37,20 @@ const tempUp = (item) => {
     <section class="list-box">
       <h3>🏙️ 지역별 날씨 현황</h3>
 
-      <div v-for="item in weatherList" :key="item.id" class="weather-card" v-memo="[item.temp]" @click="selectedCityInfo = `${item.name}이 선택되었습니다.`">
+      <div v-for="item in weatherList" :key="item.id" 
+          class="weather-card" 
+          v-memo="[item.temp]" 
+          @click="selectedCityInfo = `${item.name}이 선택되었습니다.`">
+          {{ console.log(`[렌더링 발생] ${item.name} 카드가 다시 그려졌습니다.`) }}
         <h4>{{ item.name }} ({{ item.status }})</h4>
         <p>현재 기온: {{ item.temp }}°C</p>
 
-        <span v-if="item.temp >= 25" class="badge hot">🔥 더움 (25도 이상)</span>
-        <span v-else class="badge cool">❄️ 선선함 (25도 미만)</span>
-        
         <button class="btn-tempup" @click.stop="tempUp(item)">🔥 기온 +1도</button>
+
+        <span v-if="item.temp >= 25" class="badge hot">🔥 더움 (25도 이상)</span>
+        <span v-else-if="item.temp >= 18" class="badge mild">🌤️ 쾌적함 (18~24도)</span>
+        <span v-else class="badge cool">❄️ 선선함 (18도 미만)</span>
+        
         <button class="btn-detail" @click.stop="showDetail(item.name, item.status)">상세보기</button>
       </div>
     </section>
