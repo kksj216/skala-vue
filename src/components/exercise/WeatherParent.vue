@@ -4,6 +4,7 @@ import { ref, computed, watch, watchEffect } from 'vue'
 import BaseDashboardCard from './BaseDashboardCard.vue'
 import SearchBar from './SearchBar.vue'
 import WeatherCard from './WeatherCard.vue'
+import { useWeatherSearch } from '@/composables/useWeatherSearch'
 
 const weatherList = ref([
   { id: 'city_01', name: '서울', temp: 28, status: '맑음' },
@@ -11,23 +12,26 @@ const weatherList = ref([
   { id: 'city_03', name: '부산', temp: 26, status: '구름' },
 ])
 
-const searchQuery = ref('')
-const selectedCityInfo = ref('카드를 클릭하거나 검색해 보세요.')
+// filteredWeatherList 관련 로직(computed + watch)을 useWeatherSearch() Composable로 추출하여 재사용
+const { searchQuery, selectedCityInfo, filteredWeatherList } = useWeatherSearch(weatherList)
 
-// 기존 핵심 비즈니스 로직(computed, watch)의 소유권은 안전하게 부모 콘텍스트가 격리 유지
-const filteredWeatherList = computed(() => {
-  const query = searchQuery.value.trim()
-  if (!query) return weatherList.value
-  return weatherList.value.filter((item) => item.name.includes(query))
-})
+// const searchQuery = ref('')
+// const selectedCityInfo = ref('카드를 클릭하거나 검색해 보세요.')
 
-watch(selectedCityInfo, (newInfo) => {
-  console.log(`👁️‍🗨️ [watch 감지] 상태 바 문구가 업데이트되었습니다 -> "${newInfo}"`)
-})
+// // 기존 핵심 비즈니스 로직(computed, watch)의 소유권은 안전하게 부모 콘텍스트가 격리 유지
+// const filteredWeatherList = computed(() => {
+//   const query = searchQuery.value.trim()
+//   if (!query) return weatherList.value
+//   return weatherList.value.filter((item) => item.name.includes(query))
+// })
 
-watchEffect(() => {
-  console.log(`🤖 [watchEffect 자동 호출] 현재 검색어 '${searchQuery.value}'에 매칭되는 API 데이터를 필터링합니다.`)
-})
+// watch(selectedCityInfo, (newInfo) => {
+//   console.log(`👁️‍🗨️ [watch 감지] 상태 바 문구가 업데이트되었습니다 -> "${newInfo}"`)
+// })
+
+// watchEffect(() => {
+//   console.log(`🤖 [watchEffect 자동 호출] 현재 검색어 '${searchQuery.value}'에 매칭되는 API 데이터를 필터링합니다.`)
+// })
 
 const showDetail = (cityName, status) => {
   window.alert(`${cityName}의 현재 날씨는 [${status}] 상태입니다.`)
