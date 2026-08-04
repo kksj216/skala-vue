@@ -1,6 +1,9 @@
 <script setup>
+import { computed } from 'vue'
+import { useConfigStore } from '@/stores/configStore'
+
 // 1. 상위로부터 단방향 주입받을 객체 데이터 규격 검수 (매크로)
-defineProps({
+const props = defineProps({
     cityItem: {
         type: Object,
         required: true,
@@ -9,12 +12,27 @@ defineProps({
 
 // 2. 상위로 송신할 두 가지 경로의 커스텀 이벤트 식별자 등록 (매크로)
 const emit = defineEmits(['select-card', 'click-detail'])
+
+// Config 스토어 호출
+const configStore = useConfigStore()
+
+// 화씨/섭씨 실시간 변환 연산자(computed) 등록
+const displayTemp = computed(() => {
+  if (!props.cityItem || props.cityItem.temp === undefined) return 0
+  const rawTemp = props.cityItem.temp // 원본 섭씨 온도
+
+  if (configStore.unit === 'fahrenheit') {
+    return Math.round((rawTemp * 9) / 5 + 32) // 화씨 변환
+  }
+  return rawTemp // 섭씨
+})
 </script>
 
 <template>
     <div class="weather-card" @click="emit('select-card', `${cityItem.name}이 선택되었습니다.`)">
         <h4>{{ cityItem.name }} ({{ cityItem.status }})</h4>
-        <p>현재 기온: {{ cityItem.temp }}°C</p>
+        <!-- <p>현재 기온: {{ cityItem.temp }}°C</p> -->
+        <p>현재 기온: {{ displayTemp }}{{ configStore.unitSymbol }}</p>
 
         <!-- 날씨 상태에 따른 배지 표시 (쾌적함 추가) -->
         <span v-if="cityItem.temp >= 25" class="badge hot">🔥 더움</span>
