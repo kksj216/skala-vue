@@ -42,6 +42,10 @@ watchEffect(() => {
 const showDetail = (cityName, status) => {
   window.alert(`${cityName}의 현재 날씨는 [${status}] 상태입니다.`)
 }
+
+const tempUp = (item) => {
+  item.temp++
+}
 </script>
 
 <template>
@@ -58,16 +62,19 @@ const showDetail = (cityName, status) => {
     <section class="list-box">
       <h3>🏙️ 지역별 날씨 현황</h3>
 
-      <!--  가 바뀌지 않으면 해당 카드가 재렌더링되지 않게 -->
+      <!-- item.temp가 변할 때만 이 카드의 DOM을 갱신 -->
       <div v-for="item in filteredWeatherList" 
           :key="item.id" 
           class="weather-card" 
-          v-memo="[]"
+          v-memo="[item.temp]"
           @click="selectedCityInfo = `${item.name}이 선택되었습니다.`">
-          {{ console.log(`[WeatherMockup] ${item.name} 카드 렌더링 실행`) }}
+          {{ console.log(`[렌더링 발생] ${item.name} 카드가 다시 그려졌습니다.`) }}
         <h4>{{ item.name }} ({{ item.status }})</h4>
         <p>현재 기온: {{ item.temp }}°C</p>
 
+        <button class="btn-tempup" @click.stop="tempUp(item)">🔥 기온 +1도</button>
+
+        <!-- 날씨 상태에 따른 배지 표시 (쾌적함 추가) -->
         <span v-if="item.temp >= 25" class="badge hot">🔥 더움 (25도 이상)</span>
         <span v-else-if="item.temp >= 18" class="badge mild">🌤️ 쾌적함 (18~24도)</span>
         <span v-else class="badge cool">❄️ 선선함 (18도 미만)</span>

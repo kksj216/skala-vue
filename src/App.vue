@@ -2,7 +2,7 @@
 import WeatherMockup from './components/exercise/WeatherMockup.vue'
 import WeatherComposition from './components/exercise/WeatherComposition.vue'
 import WeatherParent from './components/exercise/WeatherParent.vue'
-// import UnitToggler from './components/exercise/UnitToggler.vue'
+import UnitToggler from './components/exercise/UnitToggler.vue'
 </script>
 
 <template>
@@ -21,7 +21,7 @@ import WeatherParent from './components/exercise/WeatherParent.vue'
     <hr />
     <WeatherParent />
   </div>
-  <!-- <div class="app-container">
+  <div class="app-container">
     <h1>⛅ 과제 4: 라우터적용</h1>
     <hr />
     <div class="dashboard-wrapper">
@@ -32,6 +32,11 @@ import WeatherParent from './components/exercise/WeatherParent.vue'
       </nav>
       <main>
         <RouterView />
+        <!-- RouterView v-slot="{ Component }">
+          <KeepAlive>
+            <component :is="Component" />
+          </KeepAlive>
+        </RouterView-->
       </main>
     </div>
   </div>
@@ -49,7 +54,7 @@ import WeatherParent from './components/exercise/WeatherParent.vue'
         <RouterView />
       </main>
     </div>
-  </div> -->
+  </div>
 </template>
 
 <style>

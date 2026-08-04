@@ -135,3 +135,12 @@ input {
   font-weight: bold;
   border-radius: 6px;
 }
+.btn-tempup {
+  background: #f09e89;
+  position: absolute;
+  right: 12px;
+  bottom: 15px;
+  padding: 3px 8px;
+  cursor: pointer;
+  border-radius: 8px;
+}
