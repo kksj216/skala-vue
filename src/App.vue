@@ -15,4 +15,11 @@ import { RouterLink, RouterView } from 'vue-router'
 
 <style>
 @import '@/assets/exercise.css';
+
+#app {
+  display: flex !important;
+  flex-direction: column !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}
 </style>
