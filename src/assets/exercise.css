@@ -144,3 +144,12 @@ input {
   cursor: pointer;
   border-radius: 8px;
 }
+.btn-custom {
+  background-color: #ecd87e;
+  position: absolute;
+  right: 12px;
+  top: 15px;
+  padding: 7px 10px;
+  cursor: pointer;
+  border-radius: 4px;
+}

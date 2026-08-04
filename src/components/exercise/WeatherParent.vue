@@ -43,7 +43,19 @@ const showDetail = (cityName, status) => {
     <BaseDashboardCard>
       <h3>🏙️ 지역별 날씨 현황</h3>
 
-      <WeatherCard v-for="item in filteredWeatherList" :key="item.id" :city-item="item" @select-card="(msg) => (selectedCityInfo = msg)" @click-detail="showDetail" />
+      <WeatherCard 
+        v-for="item in filteredWeatherList" 
+        :key="item.id" 
+        :city-item="item" 
+        @select-card="(msg) => (selectedCityInfo = msg)" 
+        @click-detail="showDetail" >
+        <!-- Scoped Slot으로 전달받은(WeatherCard) slotProps 사용 -->
+        <template #action="{ item }">
+          <button class="btn-custom" @click.stop="showDetail(item.name, item.status)">
+            🔍 {{ item.name }} 자세히 보기
+          </button>
+        </template>
+      </WeatherCard>
 
       <p v-if="filteredWeatherList.length === 0" style="text-align: center; color: #e74c3c; padding: 10px 0">😭 검색 결과와 일치하는 도시가 없습니다.</p>
     </BaseDashboardCard>
