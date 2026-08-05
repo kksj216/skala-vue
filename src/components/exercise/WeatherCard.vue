@@ -41,11 +41,11 @@ const displayTemp = computed(() => {
         
         <!-- Scoped Slot: 자식의 데이터를 부모(WeatherParent)에게 바인딩하여 전달 -->
         <slot name="action" :item="cityItem">
-          <button class="btn-detail" @click.stop="emit('click-detail', cityItem.name, cityItem.status)">
+          <b-button class="btn-detail" @click.stop="emit('click-detail', cityItem.name, cityItem.status)">
             상세보기
-          </button>
+          </b-button>
         </slot>
-        
+
     </div>
 </template>
 

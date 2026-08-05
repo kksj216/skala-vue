@@ -11,7 +11,7 @@ const configStore = useConfigStore()
 const cityData = ref(null)
 const isLoading = ref(false)
 
-// 💡 [고도화] 라우터 ID 파라미터를 실제 OpenWeatherMap 쿼리용 영문 명칭과 한글 명칭으로 매핑하는 사전 장부
+// [고도화] 라우터 ID 파라미터를 실제 OpenWeatherMap 쿼리용 영문 명칭과 한글 명칭으로 매핑하는 사전 장부
 const cityMapping = {
   city_01: { english: 'Seoul', korean: '대한민국 서울특별시' },
   city_02: { english: 'Suwon', korean: '경기도 수원시 영통구' },
@@ -27,7 +27,7 @@ onMounted(async () => {
     isLoading.value = true
     try {
       const API_KEY = '707e18f9e0a4e5bc8653097f208b5b7f'
-      // 🟢 [고도화] 가짜 Mock 객체 대신, 실제 고유 타깃 도시 주소를 정밀 저격 호출
+      // [고도화] 가짜 Mock 객체 대신, 실제 고유 타깃 도시 주소를 정밀 저격 호출
       const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${targetCity.english}&appid=${API_KEY}&units=metric&lang=kr`)
 
       const raw = response.data
@@ -47,7 +47,7 @@ onMounted(async () => {
   }
 })
 
-// 🔥 [핵심 과제] 상세 정보창에서도 화씨 상태일 때 기온을 자동 변환 연산하는 센서 장착
+// 상세 정보창에서도 화씨 상태일 때 기온을 자동 변환 연산하는 센서 장착
 const displayTemp = computed(() => {
   if (!cityData.value) return 0
   const rawTemp = cityData.value.temp // 원본 섭씨 온도
@@ -60,14 +60,14 @@ const displayTemp = computed(() => {
 
 <template>
   <div class="detail-container">
-    <h3>📊 지역별 상세 기상 관측 정보 (실시간 데이터 연동)</h3>
+    <h3 class="title is-4">📊 지역별 상세 기상 관측 정보 (실시간 데이터 연동)</h3>
     <hr />
 
-    <div v-if="isLoading" style="text-align: center; padding: 20px 0; color: #7f8c8d">데이터베이스로부터 상세 정보를 동기화하는 중입니다...</div>
+    <b-notification v-if="isLoading" style="text-align: center; padding: 20px 0; color: #7f8c8d">데이터베이스로부터 상세 정보를 동기화하는 중입니다...</b-notification>
 
     <template v-else>
-      <div v-if="cityData" class="info-card">
-        <h4>📍 지정 지역: {{ cityData.name }}</h4>
+      <div v-if="cityData" class="card info-card">
+        <h4 class="title is-5 mb-3">📍 지정 지역: {{ cityData.name }}</h4>
         <p>
           실시간 기온: <strong>{{ displayTemp }}{{ configStore.unitSymbol }}</strong>
         </p>
@@ -75,12 +75,12 @@ const displayTemp = computed(() => {
         <p>대기 습도: {{ cityData.humidity }}</p>
         <p>현재 풍속: {{ cityData.wind }}</p>
       </div>
-      <div v-else>
+      <b-notification v-else>
         <p>해당 지역의 상세 데이터 장부가 존재하지 않거나 에러가 발생했습니다.</p>
-      </div>
+      </b-notification>
     </template>
 
-    <button @click="router.push('/weather')" class="back-btn">← 메인 대시보드로 돌아가기</button>
+    <b-button @click="router.push('/weather')" class="back-btn mt-4">← 메인 대시보드로 돌아가기</b-button>
   </div>
 </template>
 

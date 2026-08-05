@@ -10,7 +10,7 @@ const handleGoHome = () => {
 
 <template>
   <div>
-    <h3>ℹ️ 서비스 소개</h3>
+    <h3 class="title is-3">ℹ️ 서비스 소개</h3>
     <hr />
 
     <div class="description-box">
@@ -22,7 +22,7 @@ const handleGoHome = () => {
       </ul>
     </div>
 
-    <button @click="handleGoHome" class="home-btn">대시보드 홈으로 이동</button>
+    <b-button @click="handleGoHome" class="home-btn">대시보드 홈으로 이동</b-button>
   </div>
 </template>
 
