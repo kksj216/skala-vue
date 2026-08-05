@@ -5,6 +5,19 @@ import WeatherAllTasksView from '../views/WeatherAllTasksView.vue'
 
 const routes = [
     { path: '/', name: 'Home', component: HomeView },
+    // 세계 날씨 대시보드 & 상세보기
+    {
+        path: '/weather/world',
+        name: 'WorldWeatherHome',
+        component: () => import('../views/WorldWeatherView.vue'),
+        meta: { title: '세계 날씨' },
+    },
+    {
+        path: '/weather/world/:cityQuery',
+        name: 'WorldWeatherDetail',
+        component: () => import('../views/WorldWeatherDetailView.vue'),
+        meta: { title: '세계 날씨 상세' },
+    },
     {
         path: '/weather',
         component: WeatherAllTasksView,

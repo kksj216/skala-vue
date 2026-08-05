@@ -1,11 +1,12 @@
 <!-- views/HomeView.vue -->
 <script setup>
 const menu = [
+  { to: '/weather/world', label: '🌇 세계 날씨' },
   { to: '/weather', label: '🌦️ 날씨 대시보드' },
   { to: '/about', label: 'ℹ️ 서비스 소개' },
   { to: '/practices/basic', label: '📘 실습 1: 기본 문법' },
   { to: '/practices/composition', label: '📗 실습 2: 컴포지션 & 컴포넌트' },
-  { to: '/practices/store', label: '📙 실습 3: Store & Axios ' },
+  { to: '/practices/store', label: '📙 실습 3: Store & Axios & UI & JavaScript' },
 ]
 </script>
 
