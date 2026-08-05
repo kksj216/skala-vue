@@ -80,7 +80,7 @@ const displayTemp = computed(() => {
       </div>
     </template>
 
-    <button @click="router.push('/')" class="back-btn">← 메인 대시보드로 돌아가기</button>
+    <button @click="router.push('/weather')" class="back-btn">← 메인 대시보드로 돌아가기</button>
   </div>
 </template>
 
