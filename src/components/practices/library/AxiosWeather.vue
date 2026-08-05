@@ -1,15 +1,25 @@
 <script setup>
 import { ref } from 'vue'
 import axios from 'axios'
+import { BButton, BInput } from 'buefy'
+
+const latitude = ref(37.56)
+const longitude = ref(127.00)
 
 const weatherData = ref(null)
 const isLoading = ref(false)
 
 const handleFetchWeather = async () => {
+  if (!latitude.value || !longitude.value) {
+    alert('위도와 경도를 모두 입력해 주세요.')
+    return
+  }
+
   isLoading.value = true
 
   const API_KEY = '707e18f9e0a4e5bc8653097f208b5b7f'
-  const URL = `https://api.openweathermap.org/data/2.5/weather?lat=37.56&lon=127.00&appid=${API_KEY}&units=metric&lang=kr`
+  // const URL = `https://api.openweathermap.org/data/2.5/weather?lat=37.56&lon=127.00&appid=${API_KEY}&units=metric&lang=kr`
+  const URL = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude.value}&lon=${longitude.value}&appid=${API_KEY}&units=metric&lang=kr`
 
   try {
     // 비동기 통신 가동: 서버에서 데이터를 다 가져올 때까지 await로 기다립니다.
@@ -31,9 +41,22 @@ const handleFetchWeather = async () => {
 <template>
   <div class="practice-section">
     <h2>⚡ Axios 통신 검증</h2>
-    <button @click="handleFetchWeather" :disabled="isLoading">
+
+    <div class="input-group">
+      <label>
+        위도(lat): 
+        <BInput type="number" step="any" v-model.number="latitude" placeholder="예: 37.56" />
+      </label>
+      <label>
+        경도(lon): 
+        <BInput type="number" step="any" v-model.number="longitude" placeholder="예: 127.00" />
+      </label>
+    </div>
+
+    <BButton @click="handleFetchWeather" :disabled="isLoading">
       {{ isLoading ? '데이터 로딩 중...' : '실시간 날씨 데이터 당겨오기' }}
-    </button>
+    </BButton>
+
     <div v-if="weatherData" class="result-card">
       <p>
         📍 위치: <strong>{{ weatherData.name }}</strong>
