@@ -41,7 +41,11 @@ const handleSearch = (value) => {
       <p class="subtitle">주요 도시의 실시간 날씨와 현지 시각을 한눈에 확인하세요.</p>
     </header>
 
-    <WorldWeatherSearchBar v-model="searchQuery" :is-searching="isSearching" @search="handleSearch" />
+    <WorldWeatherSearchBar
+      v-model="searchQuery"
+      :is-searching="isSearching"
+      @search="handleSearch"
+    />
 
     <p v-if="searchError" class="search-error">😕 {{ searchError }}</p>
 
@@ -49,7 +53,10 @@ const handleSearch = (value) => {
     <section v-if="searchResult" class="search-result-section">
       <h4>🔎 검색 결과</h4>
       <div class="grid single">
-        <WorldWeatherCard :city="{ ...searchResult, name: searchResult.cityName, flag: '📍' }" @select="goToDetail" />
+        <WorldWeatherCard
+          :city="{ ...searchResult, name: searchResult.cityName, flag: '📍' }"
+          @select="goToDetail"
+        />
       </div>
     </section>
 
@@ -60,8 +67,15 @@ const handleSearch = (value) => {
       <p v-else-if="loadError" class="loading-text error">⚠️ {{ loadError }}</p>
 
       <div v-else class="grid">
-        <WorldWeatherCard v-for="city in filteredCities" :key="city.id" :city="city" @select="goToDetail" />
-        <p v-if="filteredCities.length === 0" class="empty-text">일치하는 도시가 없습니다. 검색 버튼으로 다른 도시를 찾아보세요.</p>
+        <WorldWeatherCard
+          v-for="city in filteredCities"
+          :key="city.id"
+          :city="city"
+          @select="goToDetail"
+        />
+        <p v-if="filteredCities.length === 0" class="empty-text">
+          일치하는 도시가 없습니다. 검색 버튼으로 다른 도시를 찾아보세요.
+        </p>
       </div>
     </section>
   </div>

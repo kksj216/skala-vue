@@ -13,20 +13,23 @@ const runTask1 = () => {
   const members = ['김수원', '이서울', '박부산', '최대전']
   const rawData = { id: 101, grade: 'VIP', details: { score: 95 } }
 
-  // [미션] 
+  // [미션]
   // 1. members 배열에 '박부산'이 포함(includes)되어 있는지 확인하여 담기 (true/false)
-     
+
   // 2. rawData 객체에서 grade와 details 내부의 score를 비구조화 할당으로 한 줄로 추출하기.
   // 3. 추출한 변수들을 템플릿 리터럴을 사용하여 result1.value에 아래 양식으로 문자열 주입하기.
   //    양식: "부산 포함 여부: [결과] / 등급: [결과] / 점수: [결과]점"
-  
+
   // 👉 이곳에 코드를 작성하세요.
-  // 1. 
+  // 1.
   const memberContainsPark = members.includes('박부산')
   // 2.
-  const { grade, details:{score} } = rawData
+  const {
+    grade,
+    details: { score },
+  } = rawData
   // 3.
-  result1.value = `"부산 포함 여부: ${memberContainsPark} / 등급: ${grade} / 점수: ${score}점"` 
+  result1.value = `"부산 포함 여부: ${memberContainsPark} / 등급: ${grade} / 점수: ${score}점"`
 }
 
 // =================================================================
@@ -44,27 +47,27 @@ const runTask2 = () => {
   //    양식: "카트: [updatedCart] / 이미지: [imgStatus] / 수량: [finalStock]개"
 
   // 👉 이곳에 코드를 작성하세요.
-  // 1. 
+  // 1.
   const updatedCart = [...currentCart, newProduct.name]
   // 2.
   const imgStatus = newProduct?.preview ?? '이미지 준비중'
-  // 3. 
+  // 3.
   const finalStock = newProduct.stock ?? 10
-  // 4. 
+  // 4.
   result2.value = `카트: ${updatedCart} / 이미지: ${imgStatus} / 수량: ${finalStock}개`
-
 }
 
 // =================================================================
 // 📝 [과제 3] 서버 연쇄 데이터 요청 및 에러 통합 제어 (Async/Await)
 // =================================================================
 // 가상의 백엔드 API (수정 금지 - Promise 반환형 화살표 함수)
-const fetchUserId = () => new Promise(res => setTimeout(() => res({ uid: 777 }), 400))
-const fetchUserProfile = (uid) => new Promise(res => setTimeout(() => res({ uid, nick: 'Graves' }), 400))
+const fetchUserId = () => new Promise((res) => setTimeout(() => res({ uid: 777 }), 400))
+const fetchUserProfile = (uid) =>
+  new Promise((res) => setTimeout(() => res({ uid, nick: 'Graves' }), 400))
 
 const runTask3 = async () => {
   result3.value = '⏳ 데이터 동기화 중...'
-  
+
   // [미션]
   // 1. async/await 문법을 사용하여 fetchUserId()를 먼저 호출하고, 결과 객체에서 uid를 뽑아내기.
   // 2. 뽑아낸 uid를 인자로 전달하며 fetchUserProfile(uid)을 연쇄 호출하고, 최종 결과 객체에서 nick을 뽑아내기.
@@ -72,18 +75,17 @@ const runTask3 = async () => {
   // 4. 정상 완료 시 result3.value에 "동기화 성공: [닉네임]님 환영합니다." 주입, 에러 발생 시 "통신 실패" 주입.
 
   // 👉 이곳에 코드를 작성하세요.
-  // 1. 
+  // 1.
   try {
-    // 2. 
+    // 2.
     const { uid } = await fetchUserId()
 
     // 3.
     const { nick } = await fetchUserProfile(uid)
 
-    // 4. 
+    // 4.
     result3.value = `동기화 성공: ${nick}님 환영합니다.`
-  }
-  catch {
+  } catch {
     result3.value = '통신 실패'
   }
 }
@@ -92,7 +94,7 @@ const runTask3 = async () => {
 <template>
   <div class="quiz-container">
     <h2>🎯 Modern JavaScript (ES6+) 실무 검증 과제룸</h2>
-    
+
     <div class="card">
       <h3>과제 1. 데이터 추출 및 포맷팅</h3>
       <button @click="runTask1">과제 1 가동</button>
@@ -114,8 +116,32 @@ const runTask3 = async () => {
 </template>
 
 <style scoped>
-.card { background: #f9f9f9; padding: 20px; border-radius: 8px; margin-bottom: 20px; border: 1px solid #ddd; }
-button { background: #409eff; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; font-weight: bold; }
-button:hover { background: #66b1ff; }
-.console { background: #2d2d2d; color: #67c23a; padding: 12px; border-radius: 6px; margin-top: 12px; font-family: monospace; font-size: 14px; }
+.card {
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+}
+button {
+  background: #409eff;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+button:hover {
+  background: #66b1ff;
+}
+.console {
+  background: #2d2d2d;
+  color: #67c23a;
+  padding: 12px;
+  border-radius: 6px;
+  margin-top: 12px;
+  font-family: monospace;
+  font-size: 14px;
+}
 </style>

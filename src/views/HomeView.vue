@@ -27,13 +27,10 @@ const menu = [
   <section class="section">
     <!-- 컨텐츠를 화면 중앙 영역으로 가두는 레이아웃 컨테이너 -->
     <div class="container is-max-desktop">
-      
       <!-- 상단 타이틀 영역 (Hero 섹션 느낌) -->
       <div class="has-text-centered mb-6">
         <h1 class="title is-2">🏠 Vue 실습 홈</h1>
-        <p class="subtitle is-5 has-text-grey">
-          아래 링크를 눌러 각 실습 화면으로 이동하세요.
-        </p>
+        <p class="subtitle is-5 has-text-grey">아래 링크를 눌러 각 실습 화면으로 이동하세요.</p>
       </div>
 
       <!-- 메인 메뉴 카드 및 그리드 레이아웃 -->
@@ -56,7 +53,6 @@ const menu = [
           </div>
         </div>
       </div>
-
     </div>
   </section>
 </template>

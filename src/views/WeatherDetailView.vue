@@ -28,7 +28,9 @@ onMounted(async () => {
     try {
       const API_KEY = import.meta.env.VITE_OPENWEATHER_API_KEY
       // [고도화] 가짜 Mock 객체 대신, 실제 고유 타깃 도시 주소를 정밀 저격 호출
-      const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${targetCity.english}&appid=${API_KEY}&units=metric&lang=kr`)
+      const response = await axios.get(
+        `https://api.openweathermap.org/data/2.5/weather?q=${targetCity.english}&appid=${API_KEY}&units=metric&lang=kr`,
+      )
 
       const raw = response.data
       // 화면 템플릿 구조가 깨지지 않도록 오픈웨더 JSON 알맹이를 정확히 역매핑 유치
@@ -63,7 +65,9 @@ const displayTemp = computed(() => {
     <h3 class="title is-4">📊 지역별 상세 기상 관측 정보 (실시간 데이터 연동)</h3>
     <hr />
 
-    <b-notification v-if="isLoading" style="text-align: center; padding: 20px 0; color: #7f8c8d">데이터베이스로부터 상세 정보를 동기화하는 중입니다...</b-notification>
+    <b-notification v-if="isLoading" style="text-align: center; padding: 20px 0; color: #7f8c8d"
+      >데이터베이스로부터 상세 정보를 동기화하는 중입니다...</b-notification
+    >
 
     <template v-else>
       <div v-if="cityData" class="card info-card">
@@ -80,7 +84,9 @@ const displayTemp = computed(() => {
       </b-notification>
     </template>
 
-    <b-button @click="router.push('/weather')" class="back-btn mt-4">← 메인 대시보드로 돌아가기</b-button>
+    <b-button @click="router.push('/weather')" class="back-btn mt-4"
+      >← 메인 대시보드로 돌아가기</b-button
+    >
   </div>
 </template>
 

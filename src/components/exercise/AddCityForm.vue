@@ -26,7 +26,7 @@ const handleSubmit = () => {
     id: `city_${Date.now()}`, // 고유 키 생성
     name: cityName.value.trim(),
     temp: Number(temp.value),
-    status: status.value
+    status: status.value,
   })
 
   // 폼 초기화
@@ -42,19 +42,12 @@ const handleSubmit = () => {
     <form @submit.prevent="handleSubmit">
       <div class="form-group">
         <label>도시명:</label>
-        <input 
-          type="text" 
-          v-model.trim="cityName" 
-          placeholder="예: 대구" 
-        />
+        <input type="text" v-model.trim="cityName" placeholder="예: 대구" />
       </div>
 
       <div class="form-group">
         <label>기온 (°C):</label>
-        <input 
-          type="number" 
-          v-model.number="temp" 
-        />
+        <input type="number" v-model.number="temp" />
       </div>
 
       <div class="form-group">

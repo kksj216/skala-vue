@@ -17,7 +17,9 @@ defineProps({
       <img v-if="guide.thumbnailUrl" class="thumb" :src="guide.thumbnailUrl" :alt="guide.title" />
       <div class="guide-text">
         <p class="extract">{{ guide.extract }}</p>
-        <a class="more-link" :href="guide.pageUrl" target="_blank" rel="noopener">Wikivoyage에서 더 보기 →</a>
+        <a class="more-link" :href="guide.pageUrl" target="_blank" rel="noopener"
+          >Wikivoyage에서 더 보기 →</a
+        >
       </div>
     </div>
   </section>

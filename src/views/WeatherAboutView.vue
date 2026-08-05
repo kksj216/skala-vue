@@ -8,12 +8,36 @@ const handleGoHome = () => {
 }
 
 const features = [
-  { icon: '🌍', title: '세계 날씨 대시보드', desc: '주요 도시의 실시간 기온, 날씨 상태, 현지 시각을 카드 형태로 한눈에 확인합니다.' },
-  { icon: '🔎', title: '도시 검색 & 추가', desc: '원하는 도시를 이름으로 검색하고, 마음에 들면 주요 도시 목록에 저장할 수 있습니다.' },
-  { icon: '📊', title: '상세 기상 정보', desc: '체감 온도, 습도, 풍속, 일출·일몰 시각 등 상세한 기상 데이터를 제공합니다.' },
-  { icon: '📍', title: '위치 시각화', desc: '지도 위에서 도시의 실제 위치를 직접 확인할 수 있습니다.' },
-  { icon: '📖', title: '도시 여행 정보', desc: 'Wikivoyage 데이터를 연동해 도시에 대한 간단한 여행 소개글을 함께 보여줍니다.' },
-  { icon: '💌', title: '오늘의 응원 멘트', desc: '현재 온도와 날씨 상태에 맞춰 하루를 응원하는 짧은 문장을 전달합니다.' },
+  {
+    icon: '🌍',
+    title: '세계 날씨 대시보드',
+    desc: '주요 도시의 실시간 기온, 날씨 상태, 현지 시각을 카드 형태로 한눈에 확인합니다.',
+  },
+  {
+    icon: '🔎',
+    title: '도시 검색 & 추가',
+    desc: '원하는 도시를 이름으로 검색하고, 마음에 들면 주요 도시 목록에 저장할 수 있습니다.',
+  },
+  {
+    icon: '📊',
+    title: '상세 기상 정보',
+    desc: '체감 온도, 습도, 풍속, 일출·일몰 시각 등 상세한 기상 데이터를 제공합니다.',
+  },
+  {
+    icon: '📍',
+    title: '위치 시각화',
+    desc: '지도 위에서 도시의 실제 위치를 직접 확인할 수 있습니다.',
+  },
+  {
+    icon: '📖',
+    title: '도시 여행 정보',
+    desc: 'Wikivoyage 데이터를 연동해 도시에 대한 간단한 여행 소개글을 함께 보여줍니다.',
+  },
+  {
+    icon: '💌',
+    title: '오늘의 응원 멘트',
+    desc: '현재 온도와 날씨 상태에 맞춰 하루를 응원하는 짧은 문장을 전달합니다.',
+  },
 ]
 
 const techStack = [
@@ -31,8 +55,9 @@ const techStack = [
     <header class="hero">
       <h2>ℹ️ 서비스 소개</h2>
       <p class="lead">
-        <strong>Vue 3</strong>와 <strong>Vue Router 4</strong> 기반으로 제작된 실습용 기상 관측 대시보드이자,
-        전 세계 주요 도시의 날씨와 여행 정보를 한 화면에서 확인할 수 있는 서비스입니다.
+        <strong>Vue 3</strong>와 <strong>Vue Router 4</strong> 기반으로 제작된 실습용 기상 관측
+        대시보드이자, 전 세계 주요 도시의 날씨와 여행 정보를 한 화면에서 확인할 수 있는
+        서비스입니다.
       </p>
     </header>
 
@@ -61,7 +86,10 @@ const techStack = [
       <h3>🧱 아키텍처 원칙</h3>
       <div class="description-box">
         <ul>
-          <li><code>services/</code> — 외부 API(OpenWeather, Wikivoyage) 호출만 담당하는 순수 함수 계층</li>
+          <li>
+            <code>services/</code> — 외부 API(OpenWeather, Wikivoyage) 호출만 담당하는 순수 함수
+            계층
+          </li>
           <li><code>composables/</code> — 화면 상태와 흐름을 관리하는 비즈니스 로직 계층</li>
           <li><code>components/</code> — props/emit으로만 동작하는 순수 UI 계층</li>
           <li><code>views/</code> — 위 계층들을 조립해 하나의 화면으로 구성</li>

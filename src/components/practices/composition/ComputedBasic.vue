@@ -6,27 +6,27 @@ const dummy = ref(0)
 
 // 1. 일반 함수: 화면이 조금이라도 리렌더링되면 무조건 재실행
 const getMethodResult = () => {
-    console.log('❌ 일반 함수 실행됨!')
-    return count.value * 2
+  console.log('❌ 일반 함수 실행됨!')
+  return count.value * 2
 }
 
 // 2. Computed: count가 바뀔 때만 재연산 (dummy가 바뀔 땐 이전 값 재사용)
 const doubleCount = computed(() => {
-    console.log('✅ computed 연산 실행됨!')
-    return count.value * 2
+  console.log('✅ computed 연산 실행됨!')
+  return count.value * 2
 })
 </script>
 
 <template>
-    <div class="practice-section">
-        <h2>Computed 캐싱 동작 비교</h2>
-        
-        <p>count: {{ count }} | dummy: {{ dummy }}</p>
+  <div class="practice-section">
+    <h2>Computed 캐싱 동작 비교</h2>
 
-        <button @click="count++">count 증가 (의존성 변경)</button>
-        <button @click="dummy++">dummy 증가 (무관한 변경)</button>
+    <p>count: {{ count }} | dummy: {{ dummy }}</p>
 
-        <p>일반 함수 결과: {{ getMethodResult() }}</p>
-        <p>Computed 결과: {{ doubleCount }}</p>
-    </div>
+    <button @click="count++">count 증가 (의존성 변경)</button>
+    <button @click="dummy++">dummy 증가 (무관한 변경)</button>
+
+    <p>일반 함수 결과: {{ getMethodResult() }}</p>
+    <p>Computed 결과: {{ doubleCount }}</p>
+  </div>
 </template>

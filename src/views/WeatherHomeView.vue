@@ -11,7 +11,7 @@ const router = useRouter()
 const route = useRoute()
 
 const latitude = ref(37.56)
-const longitude = ref(127.00)
+const longitude = ref(127.0)
 const weatherData = ref(null)
 
 // 실제 외부 API 데이터를 받아와 채워줄 빈 반응형 배열과 로딩 상태 정의
@@ -134,16 +134,15 @@ const handleDetailJump = (id) => {
 
 <template>
   <div class="dashboard-wrapper">
-
     <BaseDashboardCard>
-      <p> 🔍 위도(lat), 경도(lon)로 날씨 검색 하기</p>
+      <p>🔍 위도(lat), 경도(lon)로 날씨 검색 하기</p>
       <div class="input-group">
         <label>
-          위도(lat): 
+          위도(lat):
           <BInput type="number" step="any" v-model.number="latitude" placeholder="예: 37.56" />
         </label>
         <label>
-          경도(lon): 
+          경도(lon):
           <BInput type="number" step="any" v-model.number="longitude" placeholder="예: 127.00" />
         </label>
       </div>
@@ -178,12 +177,28 @@ const handleDetailJump = (id) => {
     <BaseDashboardCard>
       <h3>🏙️ 지역별 날씨 현황 (실시간 기상청 연동)</h3>
 
-      <p v-if="isLoading" style="text-align: center; color: #3498db; font-weight: bold; padding: 20px 0">🔄 글로벌 기상 위성으로부터 실시간 기상 데이터를 수신 중입니다...</p>
+      <p
+        v-if="isLoading"
+        style="text-align: center; color: #3498db; font-weight: bold; padding: 20px 0"
+      >
+        🔄 글로벌 기상 위성으로부터 실시간 기상 데이터를 수신 중입니다...
+      </p>
 
       <template v-else>
-        <WeatherCard v-for="item in filteredWeatherList" :key="item.id" :city-item="item" @select-card="(msg) => (selectedCityInfo = msg)" @click-detail="handleDetailJump(item.id)" />
+        <WeatherCard
+          v-for="item in filteredWeatherList"
+          :key="item.id"
+          :city-item="item"
+          @select-card="(msg) => (selectedCityInfo = msg)"
+          @click-detail="handleDetailJump(item.id)"
+        />
 
-        <p v-if="filteredWeatherList.length === 0" style="text-align: center; color: #e74c3c; padding: 10px 0">😭 검색 결과와 일치하는 도시가 없습니다.</p>
+        <p
+          v-if="filteredWeatherList.length === 0"
+          style="text-align: center; color: #e74c3c; padding: 10px 0"
+        >
+          😭 검색 결과와 일치하는 도시가 없습니다.
+        </p>
       </template>
     </BaseDashboardCard>
     <div class="status-bar">{{ selectedCityInfo }}</div>

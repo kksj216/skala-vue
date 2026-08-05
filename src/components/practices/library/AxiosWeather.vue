@@ -4,7 +4,7 @@ import axios from 'axios'
 import { BButton, BInput } from 'buefy'
 
 const latitude = ref(37.56)
-const longitude = ref(127.00)
+const longitude = ref(127.0)
 
 const weatherData = ref(null)
 const isLoading = ref(false)
@@ -44,11 +44,11 @@ const handleFetchWeather = async () => {
 
     <div class="input-group">
       <label>
-        위도(lat): 
+        위도(lat):
         <BInput type="number" step="any" v-model.number="latitude" placeholder="예: 37.56" />
       </label>
       <label>
-        경도(lon): 
+        경도(lon):
         <BInput type="number" step="any" v-model.number="longitude" placeholder="예: 127.00" />
       </label>
     </div>

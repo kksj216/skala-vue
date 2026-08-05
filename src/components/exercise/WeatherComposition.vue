@@ -57,7 +57,7 @@ const tempUp = (item) => {
     <section class="search-box">
       <h3>🔍 도시 검색</h3>
       <!-- :value와 @input 조합 => v-model 로 개선 -->
-      <input type="text" v-model.trim.lazy="searchQuery" placeholder="검색할 도시 이름 입력"/>
+      <input type="text" v-model.trim.lazy="searchQuery" placeholder="검색할 도시 이름 입력" />
       <p>
         검색 중인 도시: <strong>{{ searchQuery }}</strong>
       </p>
@@ -67,12 +67,14 @@ const tempUp = (item) => {
       <h3>🏙️ 지역별 날씨 현황</h3>
 
       <!-- item.temp가 변할 때만 이 카드의 DOM을 갱신 -->
-      <div v-for="item in filteredWeatherList" 
-          :key="item.id" 
-          class="weather-card" 
-          v-memo="[item.temp]"
-          @click="selectedCityInfo = `${item.name}이 선택되었습니다.`">
-          {{ console.log(`[렌더링 발생] ${item.name} 카드가 다시 그려졌습니다.`) }}
+      <div
+        v-for="item in filteredWeatherList"
+        :key="item.id"
+        class="weather-card"
+        v-memo="[item.temp]"
+        @click="selectedCityInfo = `${item.name}이 선택되었습니다.`"
+      >
+        {{ console.log(`[렌더링 발생] ${item.name} 카드가 다시 그려졌습니다.`) }}
         <h4>{{ item.name }} ({{ item.status }})</h4>
         <p>현재 기온: {{ item.temp }}°C</p>
 
@@ -83,10 +85,17 @@ const tempUp = (item) => {
         <span v-else-if="item.temp >= 18" class="badge mild">🌤️ 쾌적함 (18~24도)</span>
         <span v-else class="badge cool">❄️ 선선함 (18도 미만)</span>
 
-        <button class="btn-detail" @click.stop="showDetail(item.name, item.status)">상세보기</button>
+        <button class="btn-detail" @click.stop="showDetail(item.name, item.status)">
+          상세보기
+        </button>
       </div>
 
-      <p v-if="filteredWeatherList.length === 0" style="text-align: center; color: #e74c3c; padding: 10px 0">😭 검색 결과와 일치하는 도시가 없습니다.</p>
+      <p
+        v-if="filteredWeatherList.length === 0"
+        style="text-align: center; color: #e74c3c; padding: 10px 0"
+      >
+        😭 검색 결과와 일치하는 도시가 없습니다.
+      </p>
     </section>
 
     <div class="status-bar">

@@ -22,7 +22,9 @@ const timezoneOffset = computed(() => weather.value?.timezoneOffsetSec)
 const { formattedTime } = useLiveClock(timezoneOffset)
 
 const sunriseText = computed(() =>
-  weather.value ? formatUnixToLocalTime(weather.value.sunrise, weather.value.timezoneOffsetSec) : '',
+  weather.value
+    ? formatUnixToLocalTime(weather.value.sunrise, weather.value.timezoneOffsetSec)
+    : '',
 )
 const sunsetText = computed(() =>
   weather.value ? formatUnixToLocalTime(weather.value.sunset, weather.value.timezoneOffsetSec) : '',
@@ -35,7 +37,9 @@ const { guide, isLoading: isGuideLoading, error: guideError } = useCityGuide(cit
 
 <template>
   <div class="detail-view">
-    <button class="back-btn" @click="router.push({ name: 'WorldWeatherHome' })">← 세계 날씨 목록으로</button>
+    <button class="back-btn" @click="router.push({ name: 'WorldWeatherHome' })">
+      ← 세계 날씨 목록으로
+    </button>
 
     <p v-if="isLoading" class="status-text">🔄 상세 날씨 정보를 불러오는 중입니다…</p>
     <p v-else-if="error" class="status-text error">⚠️ {{ error }}</p>
@@ -43,7 +47,11 @@ const { guide, isLoading: isGuideLoading, error: guideError } = useCityGuide(cit
     <template v-else-if="weather">
       <header class="hero">
         <div class="hero-main">
-          <img :src="getWeatherIconUrl(weather.icon)" :alt="weather.description" class="hero-icon" />
+          <img
+            :src="getWeatherIconUrl(weather.icon)"
+            :alt="weather.description"
+            class="hero-icon"
+          />
           <div>
             <h2>{{ weather.cityName }}, {{ weather.country }}</h2>
             <p class="local-time">🕒 현지 시각 {{ formattedTime }}</p>
@@ -81,7 +89,11 @@ const { guide, isLoading: isGuideLoading, error: guideError } = useCityGuide(cit
 
       <section>
         <h4>📍 위치</h4>
-        <WorldWeatherMap :lat="weather.coord.lat" :lon="weather.coord.lon" :city-name="weather.cityName" />
+        <WorldWeatherMap
+          :lat="weather.coord.lat"
+          :lon="weather.coord.lon"
+          :city-name="weather.cityName"
+        />
       </section>
     </template>
   </div>

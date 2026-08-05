@@ -3,9 +3,10 @@
     <header v-if="$slots.header" class="card-header">
       <slot name="header"></slot>
     </header>
-    
+
     <main class="card-body">
-      <slot></slot> <!-- 기본 슬롯 -->
+      <slot></slot>
+      <!-- 기본 슬롯 -->
     </main>
 
     <footer v-if="$slots.footer" class="card-footer">

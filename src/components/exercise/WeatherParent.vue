@@ -14,7 +14,8 @@ const weatherList = ref([
 ])
 
 // filteredWeatherList 관련 로직(computed + watch)을 useWeatherSearch() Composable로 추출하여 재사용
-const { searchQuery, selectedCityInfo, filteredWeatherList, addCity } = useWeatherSearch(weatherList)
+const { searchQuery, selectedCityInfo, filteredWeatherList, addCity } =
+  useWeatherSearch(weatherList)
 
 // const searchQuery = ref('')
 // const selectedCityInfo = ref('카드를 클릭하거나 검색해 보세요.')
@@ -52,12 +53,13 @@ const showDetail = (cityName, status) => {
 
       <AddCityForm @add-city="addCity" />
 
-      <WeatherCard 
-        v-for="item in filteredWeatherList" 
-        :key="item.id" 
-        :city-item="item" 
-        @select-card="(msg) => (selectedCityInfo = msg)" 
-        @click-detail="showDetail" >
+      <WeatherCard
+        v-for="item in filteredWeatherList"
+        :key="item.id"
+        :city-item="item"
+        @select-card="(msg) => (selectedCityInfo = msg)"
+        @click-detail="showDetail"
+      >
         <!-- Scoped Slot으로 전달받은(WeatherCard) slotProps 사용 -->
         <template #action="{ item }">
           <button class="btn-custom" @click.stop="showDetail(item.name, item.status)">
@@ -66,7 +68,12 @@ const showDetail = (cityName, status) => {
         </template>
       </WeatherCard>
 
-      <p v-if="filteredWeatherList.length === 0" style="text-align: center; color: #e74c3c; padding: 10px 0">😭 검색 결과와 일치하는 도시가 없습니다.</p>
+      <p
+        v-if="filteredWeatherList.length === 0"
+        style="text-align: center; color: #e74c3c; padding: 10px 0"
+      >
+        😭 검색 결과와 일치하는 도시가 없습니다.
+      </p>
 
       <template #footer>
         <small>마지막 업데이트: 방금 전</small>

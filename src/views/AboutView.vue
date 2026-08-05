@@ -1,7 +1,7 @@
 <template>
   <div class="about">
     <h1>This is an about page</h1>
-    <p> skala hi hey hey </p>
+    <p>skala hi hey hey</p>
   </div>
 </template>
 

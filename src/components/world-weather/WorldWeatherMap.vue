@@ -10,11 +10,16 @@ const props = defineProps({
 // 지도에 보여줄 영역(bounding box)을 좌표 기준 +-0.2도 정도로 잡아 도시 주변이 보이게 한다.
 const mapSrc = computed(() => {
   const delta = 0.25
-  const bbox = [props.lon - delta, props.lat - delta, props.lon + delta, props.lat + delta].join('%2C')
+  const bbox = [props.lon - delta, props.lat - delta, props.lon + delta, props.lat + delta].join(
+    '%2C',
+  )
   return `https://www.openstreetmap.org/export/embed.html?bbox=${bbox}&layer=mapnik&marker=${props.lat}%2C${props.lon}`
 })
 
-const externalLink = computed(() => `https://www.openstreetmap.org/?mlat=${props.lat}&mlon=${props.lon}#map=10/${props.lat}/${props.lon}`)
+const externalLink = computed(
+  () =>
+    `https://www.openstreetmap.org/?mlat=${props.lat}&mlon=${props.lon}#map=10/${props.lat}/${props.lon}`,
+)
 </script>
 
 <template>

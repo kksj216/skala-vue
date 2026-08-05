@@ -63,7 +63,9 @@ const handleSubmit = (event) => {
   color: #fff;
   background: linear-gradient(135deg, #4f8bff, #3563e9);
   cursor: pointer;
-  transition: transform 0.12s ease, opacity 0.12s ease;
+  transition:
+    transform 0.12s ease,
+    opacity 0.12s ease;
   white-space: nowrap;
 }
 

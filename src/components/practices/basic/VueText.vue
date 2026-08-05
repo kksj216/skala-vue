@@ -1,5 +1,5 @@
 <script setup>
-const content="안녕하세요! <strong>Skala-Vue</strong> 강의입니다."
+const content = '안녕하세요! <strong>Skala-Vue</strong> 강의입니다.'
 </script>
 
 <template>

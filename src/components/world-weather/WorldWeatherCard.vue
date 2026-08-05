@@ -10,7 +10,7 @@ const props = defineProps({
   showRemoveButton: { type: Boolean, default: false }, // 사용자가 추가한 커스텀 도시 카드에서 삭제 버튼 노출
 })
 
-const emit = defineEmits(['select',  'add', 'remove'])
+const emit = defineEmits(['select', 'add', 'remove'])
 
 const timezoneOffset = computed(() => props.city.timezoneOffsetSec)
 const { formattedTime } = useLiveClock(timezoneOffset)
@@ -33,7 +33,9 @@ const encouragement = computed(() => {
         class="remove-btn"
         title="목록에서 삭제"
         @click.stop="emit('remove', city.id)"
-      >✕</button>
+      >
+        ✕
+      </button>
 
       <div class="clickable-area" @click="emit('select', city)">
         <header class="card-top">
@@ -45,7 +47,12 @@ const encouragement = computed(() => {
         </header>
 
         <div class="card-main">
-          <img v-if="city.icon" class="weather-icon" :src="getWeatherIconUrl(city.icon)" :alt="city.description" />
+          <img
+            v-if="city.icon"
+            class="weather-icon"
+            :src="getWeatherIconUrl(city.icon)"
+            :alt="city.description"
+          />
           <div class="temp-block">
             <span class="temp">{{ Math.round(city.tempCelsius) }}°</span>
             <span class="desc">{{ city.description }}</span>
@@ -68,7 +75,6 @@ const encouragement = computed(() => {
   </article>
 </template>
 
-
 <style scoped>
 .weather-card {
   background: #fff;
@@ -76,7 +82,9 @@ const encouragement = computed(() => {
   padding: 18px 20px;
   box-shadow: 0 6px 20px rgba(30, 40, 70, 0.07);
   cursor: pointer;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
   display: flex;
   flex-direction: column;
   gap: 12px;

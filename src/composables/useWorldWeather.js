@@ -21,7 +21,9 @@ export function useWorldWeather() {
       const customMeta = getCustomCities()
       const allMeta = [...MAJOR_CITIES, ...customMeta]
 
-      const settled = await Promise.allSettled(allMeta.map((city) => fetchWeatherByCityName(city.query)))
+      const settled = await Promise.allSettled(
+        allMeta.map((city) => fetchWeatherByCityName(city.query)),
+      )
 
       cities.value = settled.map((result, idx) => {
         const meta = allMeta[idx]
@@ -43,7 +45,9 @@ export function useWorldWeather() {
   const filteredCities = computed(() => {
     const q = searchQuery.value.trim()
     if (!q) return cities.value
-    return cities.value.filter((c) => c.name.includes(q) || c.cityName?.toLowerCase().includes(q.toLowerCase()))
+    return cities.value.filter(
+      (c) => c.name.includes(q) || c.cityName?.toLowerCase().includes(q.toLowerCase()),
+    )
   })
 
   /** 목록에 없는 도시를 이름으로 검색 (예: '방콕', 'Bangkok') */

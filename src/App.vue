@@ -1,5 +1,9 @@
 <script setup>
 // import { RouterLink, RouterView } from 'vue-router'
+
+// Prettier 실습: npm run format 명령어를 실행하여 포맷팅
+// const myRegion = `Suwon`
+// const regionGreeting = `웰컴 투 ${myRegion}`
 </script>
 
 <template>
@@ -10,15 +14,9 @@
     <RouterLink to="/about" class="nav-item">ℹ️ 서비스 소개</RouterLink> 
     -->
     <template #start>
-      <b-navbar-item tag="router-link" :to="{ path: '/' }">
-        🏠 홈
-      </b-navbar-item>
-      <b-navbar-item tag="router-link" :to="{ path: '/weather' }">
-        🌤️ 날씨 대시보드
-      </b-navbar-item>
-      <b-navbar-item tag="router-link" :to="{ path: '/about' }">
-        ℹ️ 서비스 소개
-      </b-navbar-item>
+      <b-navbar-item tag="router-link" :to="{ path: '/' }"> 🏠 홈 </b-navbar-item>
+      <b-navbar-item tag="router-link" :to="{ path: '/weather' }"> 🌤️ 날씨 대시보드 </b-navbar-item>
+      <b-navbar-item tag="router-link" :to="{ path: '/about' }"> ℹ️ 서비스 소개 </b-navbar-item>
     </template>
   </b-navbar>
   <main>
