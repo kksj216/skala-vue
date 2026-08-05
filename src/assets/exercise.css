@@ -166,7 +166,7 @@ input {
 /* create-vue 스캐폴딩 기본값 (십중팔구 남아있을 코드) */
 @media (min-width: 1024px) {
   body {
-    background-color: lch(92.41% 23.66 121.15);
+    background-color: lch(92.44% 8.28 268.98);
     display: flex;
     place-items: center;
   }
