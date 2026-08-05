@@ -29,9 +29,9 @@ watch([city, dateType], ([newCity, newDate], [oldCity, oldDate]) => {
         <br />
 
         <label>날짜: </label>
-        <label><input type="radio" value="오늘" v-model="dateType"/>오늘</label>
-        <label><input type="radio" value="내일" v-model="dateType"/>내일</label>
-        <label><input type="radio" value="주간예보" v-model="dateType"/>주간예보</label>
+        <label class="radio-item"><input type="radio" value="오늘" v-model="dateType"/>오늘</label>
+        <label class="radio-item"><input type="radio" value="내일" v-model="dateType"/>내일</label>
+        <label class="radio-item"><input type="radio" value="주간예보" v-model="dateType"/>주간예보</label>
 
         <div class="monitor">
             <h3>통합 모니터링 로그</h3>
@@ -45,5 +45,12 @@ watch([city, dateType], ([newCity, newDate], [oldCity, oldDate]) => {
 .monitor {
   border-color: #00b894;
   background: #e8f5e9;
+}
+
+.radio-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
 }
 </style>
