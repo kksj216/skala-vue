@@ -52,21 +52,3 @@ import UnitToggler from '@/components/exercise/UnitToggler.vue'
     </div>
   </div>
 </template>
-
-<style scoped>
-.weather-card-container {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr)); /* 2열 정렬 */
-  gap: 24px;                                       /* 카드 간 간격 */
-  max-width: 1200px;                               /* 컨테이너 최대 너비 지정 */
-  margin: 0 auto;                                  /* 전체 레이아웃 화면 중앙 정렬 */
-  padding: 20px;
-}
-
-/* 화면이 좁은 모바일 환경 대응 (선택 사항) */
-@media (max-width: 768px) {
-  .weather-card-container {
-    grid-template-columns: 1fr;                    /* 모바일에서는 1열로 세로 정렬 */
-  }
-}
-</style>
