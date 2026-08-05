@@ -10,7 +10,7 @@ import { useWeatherSearch } from '@/composables/useWeatherSearch'
 const weatherList = ref([
   { id: 'city_01', name: '서울', temp: 28, status: '맑음' },
   { id: 'city_02', name: '수원', temp: 24, status: '비' },
-  { id: 'city_03', name: '부산', temp: 26, status: '구름' },
+  { id: 'city_03', name: '부산', temp: 17, status: '구름' },
 ])
 
 // filteredWeatherList 관련 로직(computed + watch)을 useWeatherSearch() Composable로 추출하여 재사용
