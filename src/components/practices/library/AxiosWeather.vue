@@ -17,7 +17,7 @@ const handleFetchWeather = async () => {
 
   isLoading.value = true
 
-  const API_KEY = '707e18f9e0a4e5bc8653097f208b5b7f'
+  const API_KEY = import.meta.env.VITE_OPENWEATHER_API_KEY
   // const URL = `https://api.openweathermap.org/data/2.5/weather?lat=37.56&lon=127.00&appid=${API_KEY}&units=metric&lang=kr`
   const URL = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude.value}&lon=${longitude.value}&appid=${API_KEY}&units=metric&lang=kr`
 

@@ -14,14 +14,14 @@ const latitude = ref(37.56)
 const longitude = ref(127.00)
 const weatherData = ref(null)
 
-// 🟢 [고도화] 실제 외부 API 데이터를 받아와 채워줄 빈 반응형 배열과 로딩 상태 정의
+// 실제 외부 API 데이터를 받아와 채워줄 빈 반응형 배열과 로딩 상태 정의
 const weatherList = ref([])
 const searchQuery = ref('')
 const selectedCityInfo = ref('카드를 클릭하거나 검색해 보세요.')
 const isLoading = ref(false)
 
-// 💡 OpenWeatherMap 필수 연동 규격 정의
-const API_KEY = '707e18f9e0a4e5bc8653097f208b5b7f'
+// OpenWeatherMap 필수 연동 규격 정의
+const API_KEY = import.meta.env.VITE_OPENWEATHER_API_KEY
 const BASE_URL = 'https://api.openweathermap.org/data/2.5/weather'
 
 const handleFetchWeather = async () => {
