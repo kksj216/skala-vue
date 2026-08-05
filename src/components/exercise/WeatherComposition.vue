@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, watch, watchEffect } from 'vue'
+import { ref } from 'vue' // computed, watch, watchEffect
 import { useWeatherSearch } from '@/composables/useWeatherSearch'
 
 // 1. [1일차 데이터] 가상의 백엔드 데이터 배열

@@ -1,11 +1,11 @@
 <script setup>
-import { ref, computed, watch, watchEffect } from 'vue'
+import { ref } from 'vue' // computed, watch, watchEffect
 // 1. 컴포넌트 파일명 국룰 표기법(PascalCase) 매칭 수입
 import BaseDashboardCard from './BaseDashboardCard.vue'
 import SearchBar from './SearchBar.vue'
 import WeatherCard from './WeatherCard.vue'
 import AddCityForm from './AddCityForm.vue' // AddCityForm 컴포넌트 import
-import { useWeatherSearch } from '@/composables/useWeatherSearch'
+import { useWeatherSearch } from '@/composables/useWeatherSearch.js'
 
 const weatherList = ref([
   { id: 'city_01', name: '서울', temp: 28, status: '맑음' },
