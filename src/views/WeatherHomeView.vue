@@ -152,7 +152,7 @@ const handleDetailJump = (id) => {
         {{ isLoading ? '데이터 로딩 중...' : '실시간 날씨 데이터 당겨오기' }}
       </button>
 
-      <b-card card v-if="weatherData" class="result-card">
+      <div v-if="weatherData" class="weather-card">
         <p>
           📍 위치: <strong>{{ weatherData.name }}</strong>
         </p>
@@ -165,7 +165,7 @@ const handleDetailJump = (id) => {
         <p>
           💧 습도: <strong>{{ weatherData.main.humidity }}%</strong>
         </p>
-      </b-card>
+      </div>
       <div v-else>
         <p>아직 가져온 데이터가 없습니다. 버튼을 눌러 통신을 가동하세요.</p>
       </div>
