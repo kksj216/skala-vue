@@ -2,7 +2,7 @@
 import StoreCounter from '@/components/practices/library/StoreCounter.vue'
 import AxiosWeather from '@/components/practices/library/AxiosWeather.vue'
 import AxiosJson from '@/components/practices/library/AxiosJson.vue'
-// import ElementPlus from '@/components/practices/library/ElementPlus.vue'
+import ElementPlus from '@/components/practices/library/ElementPlus.vue'
 // import EcmaScript from '@/components/practices/library/EcmaScript.vue'
 </script>
 
